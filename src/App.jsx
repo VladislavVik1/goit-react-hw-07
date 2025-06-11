@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from './redux/contacts/operations';
-import { selectError, selectLoading } from './redux/contacts/contactsSlice';
+import { fetchContacts } from './redux/contactsOps';
+import { selectLoading, selectError } from './redux/contactsSlice';
 import ContactForm from './components/ContactForm/ContactForm';
 import ContactList from './components/ContactList/ContactList';
-import Filter from './components/Filter/Filter';
+import SearchBox from './components/SearchBox/SearchBox';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -16,12 +16,10 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <div style={{ padding: 16 }}>
+    <div>
       <h1>Phonebook</h1>
       <ContactForm />
-
-      <h2>Contacts</h2>
-      <Filter />
+      <SearchBox />
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       <ContactList />
